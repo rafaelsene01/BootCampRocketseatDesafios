@@ -24,5 +24,6 @@ routes.post('/files', upload.single('file'), FileController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
+routes.get('/users', UserController.show);
 
 export default routes;
