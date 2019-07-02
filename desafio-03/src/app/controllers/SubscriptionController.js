@@ -47,16 +47,17 @@ class SubscriptionController {
         .status(400)
         .json({ error: 'Voce ja esta inscrito neste evento' });
     }
-    /*
+
     const subscription = await Subscription.create({
       user_id: req.userId,
       meetup_id: req.params.id,
-    }); */
+    });
+
     const user = await User.findByPk(req.userId);
 
     await Queue.add(ToParticipate.key, { meetup, user });
 
-    return res.json(user);
+    return res.json(subscription);
   }
 }
 
