@@ -3,6 +3,7 @@ import Meetup from '../models/Meetup';
 import User from '../models/User';
 import File from '../models/File';
 import Subscription from '../models/Subscription';
+import Meetup from '../models/Meetup';
 
 import Queue from '../../lib/Queue';
 import ToParticipate from '../jobs/ToParticipate';
@@ -56,6 +57,38 @@ class SubscriptionController {
     const user = await User.findByPk(req.userId);
 
     await Queue.add(ToParticipate.key, { meetup, user });
+
+    return res.json(subscription);
+  }
+
+  async index(req, res) {
+    const subscription = await Subscription.findAll({
+      where: {user_id: req.userId},
+      attributes: ['id'],
+      include:[
+        {
+        model: Meetup,
+        as: 'meetup',
+        where: {data: { [Op.gt]: new Date() }},
+        attributes: ['id', 'title', 'descricao', 'localizacao', 'data'],
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['name', 'email'],
+            include: [
+              { model: File, as: 'avatar', attributes: ['url', 'name', 'path'] },
+            ],
+          },
+          {
+            model: File,
+            as: 'imagem',
+            attributes: ['url', 'name', 'path'],
+          },
+        ],
+      }],
+      order: [['meetup', 'data', 'ASC']],
+    });
 
     return res.json(subscription);
   }
