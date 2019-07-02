@@ -7,6 +7,7 @@ class MeetupEventController {
   async index(req, res) {
     const meetup = await Meetup.findAll({
       where: {
+        user_id: { [Op.ne]: req.userId },
         data: { [Op.gt]: new Date() },
       },
       order: [['data', 'DESC']],
