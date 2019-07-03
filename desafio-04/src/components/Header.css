@@ -1,0 +1,41 @@
+header#main-header {
+  background: #4A90E2;
+  height: 70;
+  border-bottom: 1px solid #ddd;
+}
+
+@font-face {
+  font-family: facebookFonte;
+  src: url(../assets/FACEBOLF.OTF);
+  font-weight: bold;
+}
+
+header#main-header .header-content {
+  width: 100%;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 30px;
+
+  font-family: 'facebookFonte';
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between
+}
+
+header#main-header .header-content h1{
+  font-size: 3.5em;
+  margin-top: 10px;
+}
+
+header#main-header .header-content div{
+  display: flex;
+  align-items: center;
+}
+
+header#main-header .header-content div img{
+  margin: 0 0 5px 10px;
+  max-width: 35px;
+}
