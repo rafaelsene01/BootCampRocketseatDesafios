@@ -101,3 +101,10 @@ export const IssueList = styled.ul`
     }
   }
 `;
+
+export const SelectStateIssues = styled.select`
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+`;
