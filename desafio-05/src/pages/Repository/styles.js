@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
@@ -107,4 +107,36 @@ export const SelectStateIssues = styled.select`
   padding: 5px;
   border: 1px solid #eee;
   border-radius: 4px;
+`;
+
+export const PageButtons = styled.div`
+  margin: 5px;
+  font-size: 18px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    background: green;
+    border: 0;
+    padding: 5px 15px;
+    margin: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ${props =>
+    props.page &&
+    css`
+      button.before {
+        background: #eee;
+        cursor: not-allowed;
+      }
+    `}
 `;

@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
-import { Loading, Owner, IssueList, SelectStateIssues } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  SelectStateIssues,
+  PageButtons,
+} from './styles';
 import Container from '../../components/Container';
 
 export default class Repository extends Component {
@@ -21,11 +27,12 @@ export default class Repository extends Component {
     issues: [],
     loading: true,
     issuesState: 'all',
+    page: 1,
   };
 
   async componentDidMount() {
     const { match } = this.props;
-    const { issuesState } = this.setState;
+    const { issuesState, page } = this.setState;
 
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -35,6 +42,7 @@ export default class Repository extends Component {
         params: {
           state: issuesState,
           per_page: 5,
+          page,
         },
       }),
     ]);
@@ -46,11 +54,13 @@ export default class Repository extends Component {
     });
   }
 
+  // async componentDidUpdat(_, prevStatus) {}
+
   hendleSelectState = async e => {
     e.preventDefault();
     const newState = e.target.value;
 
-    const { repository } = this.state;
+    const { repository, page } = this.state;
 
     this.setState({
       loading: true,
@@ -60,6 +70,7 @@ export default class Repository extends Component {
       params: {
         state: newState,
         per_page: 5,
+        page,
       },
     });
 
@@ -70,8 +81,41 @@ export default class Repository extends Component {
     });
   };
 
+  hendleChangePage = async e => {
+    e.preventDefault();
+
+    const button = e.target.value;
+
+    const { page } = this.state;
+
+    if (button === 'next') {
+      this.setState({ page: page + 1 });
+    } else if (button === 'before' && page !== 1) {
+      this.setState({ page: page - 1 });
+    }
+
+    this.setState({
+      loading: true,
+    });
+
+    const { repository, issuesState } = this.state;
+    const newIssues = await api.get(`/repos/${repository.full_name}/issues`, {
+      params: {
+        state: issuesState,
+        per_page: 5,
+        page,
+      },
+    });
+
+    this.setState({
+      issues: newIssues.data,
+      loading: false,
+      issuesState,
+    });
+  };
+
   render() {
-    const { repository, issues, loading, issuesState } = this.state;
+    const { repository, issues, loading, issuesState, page } = this.state;
 
     if (loading) {
       return <Loading>Carregando</Loading>;
@@ -110,6 +154,21 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+
+        <PageButtons page={page}>
+          <button
+            type="button"
+            className="before"
+            onClick={this.hendleChangePage}
+            value="before"
+          >
+            Anterios
+          </button>
+          {page}
+          <button type="button" onClick={this.hendleChangePage} value="next">
+            Proximo
+          </button>
+        </PageButtons>
       </Container>
     );
   }
