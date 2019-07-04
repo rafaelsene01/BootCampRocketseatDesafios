@@ -54,29 +54,36 @@ export default class Repository extends Component {
     });
   }
 
-  // async componentDidUpdat(_, prevStatus) {}
+  async componentDidUpdate(_, prevStatus) {
+    const { page } = this.state;
+
+    if (prevStatus.page !== page) {
+      this.setState({
+        loading: true,
+      });
+
+      const { repository, issuesState } = this.state;
+      const newIssues = await api.get(`/repos/${repository.full_name}/issues`, {
+        params: {
+          state: issuesState,
+          per_page: 5,
+          page,
+        },
+      });
+
+      this.setState({
+        issues: newIssues.data,
+        loading: false,
+        issuesState,
+      });
+    }
+  }
 
   hendleSelectState = async e => {
     e.preventDefault();
     const newState = e.target.value;
 
-    const { repository, page } = this.state;
-
     this.setState({
-      loading: true,
-    });
-
-    const newIssues = await api.get(`/repos/${repository.full_name}/issues`, {
-      params: {
-        state: newState,
-        per_page: 5,
-        page,
-      },
-    });
-
-    this.setState({
-      issues: newIssues.data,
-      loading: false,
       issuesState: newState,
     });
   };
@@ -93,25 +100,6 @@ export default class Repository extends Component {
     } else if (button === 'before' && page !== 1) {
       this.setState({ page: page - 1 });
     }
-
-    this.setState({
-      loading: true,
-    });
-
-    const { repository, issuesState } = this.state;
-    const newIssues = await api.get(`/repos/${repository.full_name}/issues`, {
-      params: {
-        state: issuesState,
-        per_page: 5,
-        page,
-      },
-    });
-
-    this.setState({
-      issues: newIssues.data,
-      loading: false,
-      issuesState,
-    });
   };
 
   render() {
