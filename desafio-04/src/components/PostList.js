@@ -11,7 +11,8 @@ class PostList extends Component {
         id: 1,
         author: {
           name: 'Diego Fernandes',
-          avatar,
+          avatar:
+            'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/48291454-d96b-40fa-bbd8-1f278310fa79/dcx0p42-ff7e0f92-0fab-452d-8501-e1943413cdc7.png/v1/fill/w_1280,h_1280,strp/avatar_icon_stitchbase_by_dapezza_dcx0p42-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzQ4MjkxNDU0LWQ5NmItNDBmYS1iYmQ4LTFmMjc4MzEwZmE3OVwvZGN4MHA0Mi1mZjdlMGY5Mi0wZmFiLTQ1MmQtODUwMS1lMTk0MzQxM2NkYzcucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YpMPU8AsDKy_mOEPdrgk8tbE3eTj1ewHpkUa3qApV9k',
         },
         date: '04 Jun 2019',
         content: 'Pessoal, alguém sabe se a Rocketseat está contratando?',
@@ -20,7 +21,8 @@ class PostList extends Component {
             id: 1,
             author: {
               name: 'Diego Fernandes',
-              avatar,
+              avatar:
+                'http://www.newdesignfile.com/postpic/2014/06/face-avatar-icon_249311.png',
             },
             content: 'Conteúdo do comentário',
           },
@@ -28,7 +30,8 @@ class PostList extends Component {
             id: 2,
             author: {
               name: 'Diego Fernandes',
-              avatar,
+              avatar:
+                'http://www.newdesignfile.com/postpic/2014/06/face-avatar-icon_249312.jpg',
             },
             content:
               '	Lorem ipsum suspendisse nisl lacus vestibulum taciti vel auctor elementum himenaeos, ullamcorper risus hac rhoncus aptent nisl hac habitant porta pellentesque venenatis, morbi integer magna aliquet mollis quisque semper consectetur himenaeos.',
@@ -39,7 +42,8 @@ class PostList extends Component {
         id: 1,
         author: {
           name: 'Rafael Sene',
-          avatar,
+          avatar:
+            'http://www.newdesignfile.com/postpic/2014/06/avatar-icon-head_249314.png',
         },
         date: '03 Jul 2019',
         content: 'Bora termina o desafio 04?',
@@ -48,7 +52,8 @@ class PostList extends Component {
             id: 1,
             author: {
               name: 'Daniel',
-              avatar,
+              avatar:
+                'http://www.newdesignfile.com/postpic/2014/06/avatar-icon_249316.png',
             },
             content: 'Bora !!!',
           },
@@ -56,7 +61,8 @@ class PostList extends Component {
             id: 2,
             author: {
               name: 'Junior',
-              avatar,
+              avatar:
+                'http://www.newdesignfile.com/postpic/2014/06/avatar-icon_249320.png',
             },
             content: 'Finalizado',
           },
@@ -64,7 +70,8 @@ class PostList extends Component {
             id: 3,
             author: {
               name: 'Diego Fernandes',
-              avatar,
+              avatar:
+                'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/48291454-d96b-40fa-bbd8-1f278310fa79/dcx0p42-ff7e0f92-0fab-452d-8501-e1943413cdc7.png/v1/fill/w_1280,h_1280,strp/avatar_icon_stitchbase_by_dapezza_dcx0p42-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzQ4MjkxNDU0LWQ5NmItNDBmYS1iYmQ4LTFmMjc4MzEwZmE3OVwvZGN4MHA0Mi1mZjdlMGY5Mi0wZmFiLTQ1MmQtODUwMS1lMTk0MzQxM2NkYzcucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YpMPU8AsDKy_mOEPdrgk8tbE3eTj1ewHpkUa3qApV9k',
             },
             content: 'Bora coda Dev',
           },
