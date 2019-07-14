@@ -13,8 +13,8 @@ const Routes = createAppContainer(
     },
     {
       headerBackTitleVisible: false,
-      defaultNavigationOptions: navigation => ({
-        header: <Header {...navigation} />,
+      defaultNavigationOptions: props => ({
+        header: <Header {...props} />,
       }),
     }
   )
