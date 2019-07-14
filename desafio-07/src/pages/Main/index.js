@@ -18,6 +18,8 @@ import {
   ProductAmount,
   ProductAmountText,
   AddButtonText,
+  ProductTitle,
+  ProductPrice,
 } from './styles';
 
 import { formatPrice } from '../../util/format';
@@ -54,6 +56,8 @@ export default class Main extends React.Component {
           renderItem={({ item }) => (
             <Product key={item.id}>
               <ProductImg source={{ uri: item.image }} />
+              <ProductTitle>{item.title}</ProductTitle>
+              <ProductPrice>{formatPrice(item.price)}</ProductPrice>
               <AddButton>
                 <ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
