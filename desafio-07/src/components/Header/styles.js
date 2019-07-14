@@ -34,7 +34,7 @@ export const ItemCount = styled.Text`
   color: white;
   min-width: 15px;
   min-height: 15px;
-  background: red;
+  background: #7159c1;
   padding: 2px;
   border-radius: 10px;
 `;
