@@ -5,18 +5,21 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "api": "json-server server.json -p 3333"
+    "api": "json-server server.json -p 3333",
+    "android-dev": "adb reverse tcp:3332 tcp:3332 && react-native run-android"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "numeral": "^2.0.6",
+    "polished": "^3.4.1",
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.10",
-    "reactotron-react-native": "^3.6.4",
-    "styled-components": "^4.3.2",
-    "react-navigation": "^3.11.0",
     "react-native-gesture-handler": "^1.3.0",
     "react-native-vector-icons": "^6.6.0",
-    "prop-types": "^15.7.2",
-    "axios": "^0.19.0"
+    "react-navigation": "^3.11.0",
+    "reactotron-react-native": "^3.6.4",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
