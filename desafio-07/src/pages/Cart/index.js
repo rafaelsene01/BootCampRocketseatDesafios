@@ -29,13 +29,13 @@ import {
   RemoveButton,
 } from './styles';
 
-function Cart({ products, removeFromCart, updateAmount, total }) {
+function Cart({ products, removeFromCart, updateAmountRequest, total }) {
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
   return (
     <Container>
