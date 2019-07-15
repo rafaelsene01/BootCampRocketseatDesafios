@@ -29,7 +29,7 @@ import {
   RemoveButton,
 } from './styles';
 
-function Cart({ products, removeFromCart, updateAmount }) {
+function Cart({ products, removeFromCart, updateAmount, total }) {
   function decrement(product) {
     updateAmount(product.id, product.amount - 1);
   }
@@ -73,7 +73,7 @@ function Cart({ products, removeFromCart, updateAmount }) {
       <Footer>
         <ContainerValor>
           <TextTotal>total</TextTotal>
-          <TextValor>R$ 1.595,99</TextValor>
+          <TextValor>{total}</TextValor>
         </ContainerValor>
         <Carrinho>
           <FooterButtonText>Buy Itens</FooterButtonText>

@@ -53,6 +53,8 @@ class Main extends React.Component {
 
   render() {
     const { products } = this.state;
+    const { amount, total } = this.props;
+
     return (
       <Container>
         <List
@@ -68,7 +70,7 @@ class Main extends React.Component {
               <AddButton onPress={() => this.handleAddProduct(item)}>
                 <ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
-                  <ProductAmountText>2</ProductAmountText>
+                  <ProductAmountText>{amount[item.id] || 0}</ProductAmountText>
                 </ProductAmount>
                 <AddButtonText>ADICIONAR</AddButtonText>
               </AddButton>
@@ -79,7 +81,7 @@ class Main extends React.Component {
         <Footer>
           <ContainerValor>
             <TextTotal>total</TextTotal>
-            <TextValor>R$ 1.595,99</TextValor>
+            <TextValor>{total}</TextValor>
           </ContainerValor>
           <Carrinho>
             <FooterButtonText>Shopping Cart</FooterButtonText>
@@ -89,9 +91,25 @@ class Main extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.cart.map(product => ({
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+  })),
+  total: formatPrice(
+    state.cart.reduce((total, product) => {
+      return total + product.price * product.amount;
+    }, 0)
+  ),
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {}),
+});
 const mapDispatchToProps = dispatch =>
   bindActionCreators(CartActions, dispatch);
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Main);
