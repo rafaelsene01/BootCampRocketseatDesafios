@@ -34,4 +34,15 @@ export const Carrinho = styled.TouchableOpacity`
   font-size: 30px;
   border-radius: 6px;
   padding: 10px;
+  min-width: 130px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FooterButtonText = styled.Text`
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 `;

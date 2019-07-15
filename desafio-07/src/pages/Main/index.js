@@ -8,9 +8,9 @@ import {
   TextTotal,
   TextValor,
   Carrinho,
+  FooterButtonText,
 } from '../../components/View/Footer';
 import {
-  Text,
   List,
   Product,
   ProductImg,
@@ -38,8 +38,6 @@ export default class Main extends React.Component {
       ...product,
       priceFormatted: formatPrice(product.price),
     }));
-
-    console.tron.log(data);
 
     this.setState({ products: data });
   }
@@ -75,7 +73,7 @@ export default class Main extends React.Component {
             <TextValor>R$ 1.595,99</TextValor>
           </ContainerValor>
           <Carrinho>
-            <Text>Shopping Cart</Text>
+            <FooterButtonText>Shopping Cart</FooterButtonText>
           </Carrinho>
         </Footer>
       </Container>
