@@ -45,15 +45,15 @@ class Main extends React.Component {
     this.setState({ products: data });
   }
 
-  handleAddProduct = product => {
-    const { addToCart } = this.props;
+  handleAddProduct = id => {
+    const { addToCartRequest } = this.props;
 
-    addToCart(product);
+    addToCartRequest(id);
   };
 
   render() {
     const { products } = this.state;
-    const { amount, total } = this.props;
+    const { amount, total, navigation } = this.props;
 
     return (
       <Container>
@@ -67,7 +67,7 @@ class Main extends React.Component {
               <ProductImg source={{ uri: item.image }} />
               <ProductTitle>{item.title}</ProductTitle>
               <ProductPrice>{formatPrice(item.price)}</ProductPrice>
-              <AddButton onPress={() => this.handleAddProduct(item)}>
+              <AddButton onPress={() => this.handleAddProduct(item.id)}>
                 <ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
                   <ProductAmountText>{amount[item.id] || 0}</ProductAmountText>
@@ -83,7 +83,7 @@ class Main extends React.Component {
             <TextTotal>total</TextTotal>
             <TextValor>{total}</TextValor>
           </ContainerValor>
-          <Carrinho>
+          <Carrinho onPress={() => navigation.navigate('Cart')}>
             <FooterButtonText>Shopping Cart</FooterButtonText>
           </Carrinho>
         </Footer>
