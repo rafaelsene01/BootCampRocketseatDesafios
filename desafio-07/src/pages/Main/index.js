@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Container } from '../../components/View/Container';
@@ -26,7 +27,7 @@ import { formatPrice } from '../../util/format';
 
 import api from '../../services/api';
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   state = {
     products: [],
   };
@@ -42,6 +43,15 @@ export default class Main extends React.Component {
     this.setState({ products: data });
   }
 
+  handleAddProduct = product => {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    });
+  };
+
   render() {
     const { products } = this.state;
     return (
@@ -56,7 +66,7 @@ export default class Main extends React.Component {
               <ProductImg source={{ uri: item.image }} />
               <ProductTitle>{item.title}</ProductTitle>
               <ProductPrice>{formatPrice(item.price)}</ProductPrice>
-              <AddButton>
+              <AddButton onPress={() => this.handleAddProduct(item)}>
                 <ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
                   <ProductAmountText>2</ProductAmountText>
@@ -80,3 +90,5 @@ export default class Main extends React.Component {
     );
   }
 }
+
+export default connect()(Main);
