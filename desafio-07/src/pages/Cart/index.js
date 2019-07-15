@@ -27,7 +27,7 @@ import {
   RemoveButton,
 } from './styles';
 
-function Cart({ products }) {
+function Cart({ products, dispatch }) {
   return (
     <Container>
       <List
@@ -55,7 +55,11 @@ function Cart({ products }) {
               </ProductAmount>
               <SubTotal>{item.subtotal}</SubTotal>
             </ProductView>
-            <RemoveButton>
+            <RemoveButton
+              onPress={() =>
+                dispatch({ type: 'REMOVE_FROM_CART', id: item.id })
+              }
+            >
               <Icon name="remove-shopping-cart" size={24} color="#7159c1" />
             </RemoveButton>
           </Product>
