@@ -57,7 +57,6 @@ export default function Cart() {
       <List
         vertical
         data={products}
-        extraData={this.props}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
           <Product key={item.id}>
