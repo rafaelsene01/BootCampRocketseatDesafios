@@ -29,7 +29,14 @@ import {
   RemoveButton,
 } from './styles';
 
-function Cart({ products, removeFromCart }) {
+function Cart({ products, removeFromCart, updateAmount }) {
+  function decrement(product) {
+    updateAmount(product.id, product.amount - 1);
+  }
+
+  function increment(product) {
+    updateAmount(product.id, product.amount + 1);
+  }
   return (
     <Container>
       <List
@@ -43,7 +50,7 @@ function Cart({ products, removeFromCart }) {
             <ProductView>
               <ProductTitle>{item.title}</ProductTitle>
               <ProductAmount>
-                <DecrementAmount>
+                <DecrementAmount onPress={() => decrement(item)}>
                   <Icon
                     name="remove-circle-outline"
                     color="#7159c1"
@@ -51,7 +58,7 @@ function Cart({ products, removeFromCart }) {
                   />
                 </DecrementAmount>
                 <ProductAmountText>{item.amount}</ProductAmountText>
-                <IncrementAmount>
+                <IncrementAmount onPress={() => increment(item)}>
                   <Icon name="add-circle-outline" color="#7159c1" size={24} />
                 </IncrementAmount>
               </ProductAmount>
