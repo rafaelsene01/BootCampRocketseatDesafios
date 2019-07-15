@@ -59,3 +59,5 @@ export const ProductTitle = styled.Text`
   font-size: 16px;
   font-weight: bold;
 `;
+
+export const RemoveButton = styled.TouchableOpacity``;
