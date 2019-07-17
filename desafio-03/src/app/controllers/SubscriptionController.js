@@ -3,7 +3,6 @@ import Meetup from '../models/Meetup';
 import User from '../models/User';
 import File from '../models/File';
 import Subscription from '../models/Subscription';
-import Meetup from '../models/Meetup';
 
 import Queue from '../../lib/Queue';
 import ToParticipate from '../jobs/ToParticipate';
@@ -63,30 +62,35 @@ class SubscriptionController {
 
   async index(req, res) {
     const subscription = await Subscription.findAll({
-      where: {user_id: req.userId},
+      where: { user_id: req.userId },
       attributes: ['id'],
-      include:[
+      include: [
         {
-        model: Meetup,
-        as: 'meetup',
-        where: {data: { [Op.gt]: new Date() }},
-        attributes: ['id', 'title', 'descricao', 'localizacao', 'data'],
-        include: [
-          {
-            model: User,
-            as: 'user',
-            attributes: ['name', 'email'],
-            include: [
-              { model: File, as: 'avatar', attributes: ['url', 'name', 'path'] },
-            ],
-          },
-          {
-            model: File,
-            as: 'imagem',
-            attributes: ['url', 'name', 'path'],
-          },
-        ],
-      }],
+          model: Meetup,
+          as: 'meetup',
+          where: { data: { [Op.gt]: new Date() } },
+          attributes: ['id', 'title', 'descricao', 'localizacao', 'data'],
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['name', 'email'],
+              include: [
+                {
+                  model: File,
+                  as: 'avatar',
+                  attributes: ['url', 'name', 'path'],
+                },
+              ],
+            },
+            {
+              model: File,
+              as: 'imagem',
+              attributes: ['url', 'name', 'path'],
+            },
+          ],
+        },
+      ],
       order: [['meetup', 'data', 'ASC']],
     });
 
