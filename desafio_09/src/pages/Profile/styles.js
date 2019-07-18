@@ -8,9 +8,11 @@ export const Container = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     margin-top: 30px;
 
     input {
+      width: 100%;
       background: rgba(0, 0, 0, 0.1);
       border: 0;
       border-radius: 4px;
@@ -39,6 +41,7 @@ export const Container = styled.div`
     }
 
     button {
+      width: 162px;
       background: #3b9eff;
       border: 0;
       border-radius: 4px;
@@ -47,10 +50,13 @@ export const Container = styled.div`
       margin: 5px 0 0;
       font-weight: bold;
       font-size: 16px;
-      transition: background 0.2s;
 
-      &:hover {
-        background: ${darken(0.08, '#3b9eff')};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        margin-right: 10px;
       }
     }
   }
