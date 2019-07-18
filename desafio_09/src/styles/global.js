@@ -30,6 +30,10 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: Helvetica;
+    font-size: 16px;
   }
 
   ul {
@@ -38,5 +42,24 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+    background-color: #e5556e !important;
+  }
+
+  button#voltar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 25px;
+    width: 71px;
+    height: 42px;
+    border-radius: 4px;
+    border: none;
+
+    a{
+      width: 31px;
+      height: 18px;
+
+      font-weight: 700;
+    }
   }
 `;

@@ -15,9 +15,7 @@ export default function Header() {
         </nav>
 
         <aside>
-          <nav>
-            <Link to="/login">LOGIN</Link>
-          </nav>
+          <Link to="/login">LOGIN</Link>
         </aside>
       </Content>
     </Container>

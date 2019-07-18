@@ -5,7 +5,7 @@ export const Container = styled.div`
   padding: 0 30px;
 `;
 export const Content = styled.div`
-  height: 60px;
+  height: 92px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -14,7 +14,14 @@ export const Content = styled.div`
 
   a {
     text-decoration: none;
+    font-weight: bold;
+    color: #fff;
   }
+
+  a:hover {
+    color: #e5556e;
+  }
+
   nav {
     display: flex;
     align-items: center;
@@ -23,11 +30,6 @@ export const Content = styled.div`
       margin-right: 20px;
       padding-right: 20px;
       border-right: 1px solid #eee;
-    }
-
-    a {
-      font-weight: bold;
-      color: #fff;
     }
   }
 
