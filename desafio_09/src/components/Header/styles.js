@@ -36,14 +36,25 @@ export const Content = styled.div`
   aside {
     display: flex;
     align-items: center;
+
+    button {
+      margin: 25px;
+      width: 71px;
+      height: 42px;
+      border-radius: 4px;
+      border: none;
+
+      a {
+        width: 31px;
+        height: 18px;
+        font-weight: 700;
+      }
+    }
   }
 `;
 export const Profile = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #eee;
 
   div {
     text-align: right;
@@ -51,7 +62,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #333;
+      color: #fff;
     }
     a {
       display: block;

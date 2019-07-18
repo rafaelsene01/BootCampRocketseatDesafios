@@ -25,11 +25,12 @@ export default function RouteWrapper({
   }
 
   let Layout = screenLR ? AuthLayout : null;
-  if (!Layout && !isPrivate) {
-    Layout = PublicLayout;
-  }
+
   if (!Layout && isPrivate) {
     Layout = signed ? DefaultLayout : AuthLayout;
+  }
+  if (!Layout && !isPrivate) {
+    Layout = PublicLayout;
   }
 
   return (

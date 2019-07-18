@@ -58,7 +58,6 @@ export default createGlobalStyle`
     a{
       width: 31px;
       height: 18px;
-
       font-weight: 700;
     }
   }

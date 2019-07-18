@@ -46,7 +46,7 @@ export default function SingUp() {
           {loading ? 'Carregando...' : 'Criar conta'}
         </button>
 
-        <Link to="/">Ja tenho login</Link>
+        <Link to="/login">Ja tenho login</Link>
       </Form>
     </>
   );
