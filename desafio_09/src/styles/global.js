@@ -18,6 +18,7 @@ export default createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+    min-width: 650px;
   }
 
   body {
@@ -49,7 +50,7 @@ export default createGlobalStyle`
     position: absolute;
     top: 0;
     right: 0;
-    margin: 25px;
+    margin: 25px 55px;
     width: 71px;
     height: 42px;
     border-radius: 4px;

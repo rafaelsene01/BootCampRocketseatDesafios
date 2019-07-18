@@ -17,12 +17,15 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="gobarber" />
-          <Link to="/dashboard">DASHBOARD</Link>
+          <Link to="/">MEETUPS</Link>
         </nav>
 
         <aside>
           {profile ? (
             <>
+              <Link id="dash" to="/dashboard">
+                DASHBOARD
+              </Link>
               <Profile>
                 <div>
                   <div>
@@ -37,7 +40,9 @@ export default function Header() {
               </Profile>
             </>
           ) : (
-            <Link to="/login">LOGIN</Link>
+            <button type="button">
+              <Link to="/login">LOGIN</Link>
+            </button>
           )}
         </aside>
       </Content>

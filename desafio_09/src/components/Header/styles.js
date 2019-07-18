@@ -18,10 +18,6 @@ export const Content = styled.div`
     color: #fff;
   }
 
-  a:hover {
-    color: #e5556e;
-  }
-
   nav {
     display: flex;
     align-items: center;
@@ -36,6 +32,12 @@ export const Content = styled.div`
   aside {
     display: flex;
     align-items: center;
+
+    a#dash {
+      margin-right: 20px;
+      padding-right: 20px;
+      border-right: 1px solid #eee;
+    }
 
     button {
       margin: 25px;
