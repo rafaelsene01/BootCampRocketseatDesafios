@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 600px;
-  margin: 50px auto;
+  max-width: 940px;
+  margin: auto;
 
   form {
     display: flex;
@@ -10,13 +10,14 @@ export const Container = styled.div`
     align-items: flex-end;
     margin-top: 30px;
 
-    input {
+    input,
+    textarea {
       width: 100%;
+      height: 50px;
+      border-radius: 4px;
       background: rgba(0, 0, 0, 0.1);
       border: 0;
-      border-radius: 4px;
-      height: 44px;
-      padding: 0 15px;
+      padding: 20px;
       color: #fff;
       margin: 0 0 10px;
 
@@ -25,11 +26,9 @@ export const Container = styled.div`
       }
     }
 
-    hr {
-      border: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      margin: 10px 0 20px;
+    textarea {
+      height: 200px;
+      resize: none;
     }
 
     span {
