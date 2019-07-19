@@ -40,9 +40,9 @@ export const Container = styled.div`
       font-weight: 700;
     }
 
-    button {
+    a {
       width: 162px;
-      background: #3b9eff;
+      background: #e5556e;
       border: 0;
       border-radius: 4px;
       height: 44px;

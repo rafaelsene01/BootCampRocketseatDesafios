@@ -12,8 +12,13 @@ export default function RouteWrapper({
   component: Component,
   isPrivate,
   screenLR,
+  NotFound,
   ...rest
 }) {
+  if (NotFound) {
+    return <Redirect to="/" />;
+  }
+
   const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
@@ -48,6 +53,7 @@ export default function RouteWrapper({
 RouteWrapper.propTypes = {
   isPrivate: PropTypes.bool,
   screenLR: PropTypes.bool,
+  NotFound: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
 };
@@ -55,4 +61,5 @@ RouteWrapper.propTypes = {
 RouteWrapper.defaultProps = {
   isPrivate: false,
   screenLR: false,
+  NotFound: false,
 };

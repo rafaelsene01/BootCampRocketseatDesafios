@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   MdChevronLeft,
   MdChevronRight,
@@ -44,10 +45,10 @@ export default function Dashboard() {
     <Container>
       <header>
         <strong>Meus Meetups</strong>
-        <button type="submit">
+        <Link to="/meetups/">
           <MdAddCircleOutline size={20} />
           Novo MeetUp
-        </button>
+        </Link>
       </header>
       <div id="page">
         <ButtonPrev type="button" onClick={handlePrev} page={page}>
