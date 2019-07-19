@@ -95,8 +95,12 @@ class MeetupController {
   }
 
   async index(req, res) {
+    const page = req.query.page || 1;
+
     const meetup = await Meetup.findAll({
       where: { user_id: req.userId },
+      limit: 10,
+      offset: (page - 1) * 10,
       order: [['data', 'DESC']],
       attributes: ['id', 'title', 'descricao', 'localizacao', 'data'],
       include: [
