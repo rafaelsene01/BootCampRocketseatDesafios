@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   MdLocationOn,
@@ -9,11 +9,14 @@ import {
   MdEvent,
 } from 'react-icons/md';
 
+import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
+
 import { Container, Title } from './styles';
 
 export default function Meetups() {
   const meetup = useSelector(state => state.meetup.meetup);
   const myMeetup = useSelector(state => state.meetup.myMeetup);
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -26,7 +29,10 @@ export default function Meetups() {
                 <MdModeEdit size={20} />
                 Editar
               </Link>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => dispatch(deleteMeetupRequest(meetup.id))}
+              >
                 <MdDeleteForever size={20} />
                 Cancelar
               </button>

@@ -36,3 +36,10 @@ export function editMeetupRequest(
     payload: { id, imagem_id, title, descricao, data, localizacao },
   };
 }
+
+export function deleteMeetupRequest(id) {
+  return {
+    type: '@meetup/DELETE_MEETUP_REQUEST',
+    payload: { id },
+  };
+}

@@ -66,10 +66,24 @@ export function* editMeetup({ payload }) {
     toast.error('Falha ao atualizar, verifique seus dados!');
   }
 }
+export function* deleteMeetup({ payload }) {
+  try {
+    const { id } = payload;
 
+    yield call(api.delete, `meetups/${id}`, {});
+
+    toast.success('Meetup deletado');
+    history.push('/dashboard');
+  } catch (error) {
+    toast.error(error);
+
+    toast.error('Falha ao deletar');
+  }
+}
 export default all([
   takeLatest('@meetup/SHARE_MEETUP_REQUEST', meetUp),
   takeLatest('@meetup/SHARE_MEETUP_EDIT_REQUEST', meetupEdit),
   takeLatest('@meetup/NEW_MEETUP_REQUEST', newMeetup),
   takeLatest('@meetup/EDIT_MEETUP_REQUEST', editMeetup),
+  takeLatest('@meetup/DELETE_MEETUP_REQUEST', deleteMeetup),
 ]);

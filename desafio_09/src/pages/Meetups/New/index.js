@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
 
