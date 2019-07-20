@@ -15,3 +15,15 @@ export function shareMeetupEditRequest() {
     type: '@meetup/SHARE_MEETUP_EDIT_REQUEST',
   };
 }
+export function newMeetupRequest(
+  imagem_id,
+  title,
+  descricao,
+  data,
+  localizacao
+) {
+  return {
+    type: '@meetup/NEW_MEETUP_REQUEST',
+    payload: { imagem_id, title, descricao, data, localizacao },
+  };
+}

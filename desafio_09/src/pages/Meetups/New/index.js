@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
 import { useSelector, useDispatch } from 'react-redux';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { MdAddCircleOutline } from 'react-icons/md';
-import { updateProfileRequest } from '~/store/modules/user/actions';
+import { newMeetupRequest } from '~/store/modules/meetup/actions';
 
 import ImageInput from './ImageInput';
 
 import { Container } from '../styles';
 
+registerLocale('pt-BR', ptBR);
+
 export default function New() {
   const profile = useSelector(state => state.user.profile);
+  const [dataF, setDataF] = useState();
   const dispatch = useDispatch();
 
-  function handleSubmit(data) {
-    dispatch(updateProfileRequest(data));
+  function handleSubmit({ image_id, title, descricao, localizacao }) {
+    dispatch(newMeetupRequest(image_id, title, descricao, dataF, localizacao));
+  }
+
+  function date() {
+    return new Date();
   }
 
   return (
@@ -25,7 +34,20 @@ export default function New() {
         <Input name="title" placeholder="Título do Meetup" />
         <Textarea name="descricao" placeholder="Descrição completa" />
 
-        <Input name="data" placeholder="Data do meetup" />
+        <div id="dt">
+          <DatePicker
+            showTimeSelect
+            timeFormat="p"
+            timeIntervals={30}
+            dateFormat="P p"
+            selected={dataF}
+            onChange={e => setDataF(e)}
+            minDate={date()}
+            name="data"
+            locale="pt-BR"
+            placeholderText="Data do meetup"
+          />
+        </div>
 
         <Input name="localizacao" placeholder="Localização" />
 

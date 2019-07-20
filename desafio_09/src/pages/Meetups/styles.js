@@ -69,7 +69,12 @@ export const Container = styled.div`
         margin-right: 10px;
       }
     }
-
+    div#dt {
+      width: 100%;
+      button {
+        height: 15px;
+      }
+    }
     div#LH {
       display: flex;
       align-items: center;
