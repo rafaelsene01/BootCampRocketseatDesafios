@@ -47,6 +47,7 @@ export default function Edit() {
         <div id="dt">
           <DatePicker
             showTimeSelect
+            autoComplete="off"
             timeFormat="p"
             timeIntervals={30}
             selected={dataF}

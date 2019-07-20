@@ -51,7 +51,7 @@ export const Container = styled.div`
       font-weight: bold;
     }
 
-    button {
+    > button {
       padding: 0 20px;
       background: #f64c75;
       border: 0;
@@ -72,7 +72,7 @@ export const Container = styled.div`
     div#dt {
       width: 100%;
       button {
-        height: 15px;
+        background: none !important;
       }
     }
     div#LH {

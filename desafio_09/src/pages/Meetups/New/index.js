@@ -36,6 +36,7 @@ export default function New() {
         <div id="dt">
           <DatePicker
             showTimeSelect
+            autoComplete="off"
             timeFormat="p"
             timeIntervals={30}
             dateFormat="P p"
