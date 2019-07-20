@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-  MdChevronLeft,
-  MdChevronRight,
-  MdAddCircleOutline,
-} from 'react-icons/md';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import pt from 'date-fns/locale/pt';
 
 import { format, parseISO } from 'date-fns';
@@ -26,6 +22,7 @@ export default function Dashboard() {
 
       const data = await response.data.map(meetup => ({
         ...meetup,
+        defaultData: meetup.data,
         data: format(parseISO(meetup.data), "dd 'de' MMMM',' 'as' HH'h'", {
           locale: pt,
         }),
@@ -52,7 +49,7 @@ export default function Dashboard() {
   }
   return (
     <Container>
-      {!meetUps.length ? (
+      {!meetUps.length && page === 1 ? (
         <Meetup>
           <h1>Não há reuniões</h1>
         </Meetup>

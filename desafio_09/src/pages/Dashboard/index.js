@@ -26,6 +26,7 @@ export default function Dashboard() {
 
       const data = await response.data.map(meetup => ({
         ...meetup,
+        defaultData: meetup.data,
         data: format(parseISO(meetup.data), "dd 'de' MMMM',' 'as' HH'h'", {
           locale: pt,
         }),
@@ -60,7 +61,7 @@ export default function Dashboard() {
         </Link>
       </header>
 
-      {!!meetUps.length && (
+      {(!!meetUps.length || page > 1) && (
         <>
           <div id="page">
             <ButtonPrev type="button" onClick={handlePrev} page={page}>

@@ -14,7 +14,6 @@ import { Container } from '../styles';
 registerLocale('pt-BR', ptBR);
 
 export default function New() {
-  const profile = useSelector(state => state.user.profile);
   const [dataF, setDataF] = useState();
   const dispatch = useDispatch();
 
@@ -28,7 +27,7 @@ export default function New() {
 
   return (
     <Container>
-      <Form initialData={profile} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <ImageInput name="image_id" />
 
         <Input name="title" placeholder="Título do Meetup" />

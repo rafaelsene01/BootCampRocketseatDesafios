@@ -33,8 +33,8 @@ export default function Meetups() {
             </div>
           )}
         </Title>
+        {meetup.imagem && <img src={meetup.imagem.url} alt="" />}
 
-        <img src={meetup.imagem.url} alt="" />
         <textarea id="textarea" disabled value={meetup.descricao} />
         <div id="LH">
           <MdLocationOn size={20} />

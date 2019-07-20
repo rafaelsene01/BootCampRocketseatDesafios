@@ -10,11 +10,6 @@ export function shareMeetupSuccess(meetup, myMeetup) {
     payload: { meetup, myMeetup },
   };
 }
-export function shareMeetupEditRequest() {
-  return {
-    type: '@meetup/SHARE_MEETUP_EDIT_REQUEST',
-  };
-}
 export function newMeetupRequest(
   imagem_id,
   title,
@@ -25,5 +20,19 @@ export function newMeetupRequest(
   return {
     type: '@meetup/NEW_MEETUP_REQUEST',
     payload: { imagem_id, title, descricao, data, localizacao },
+  };
+}
+
+export function editMeetupRequest(
+  id,
+  imagem_id,
+  title,
+  descricao,
+  data,
+  localizacao
+) {
+  return {
+    type: '@meetup/EDIT_MEETUP_REQUEST',
+    payload: { id, imagem_id, title, descricao, data, localizacao },
   };
 }
