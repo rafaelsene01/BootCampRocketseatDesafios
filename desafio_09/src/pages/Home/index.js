@@ -47,7 +47,7 @@ export default function Dashboard() {
   }
 
   function handleNavigateMeetup(meetup) {
-    const myMeetup = true;
+    const myMeetup = false;
     dispatch(shareMeetupRequest(meetup, myMeetup));
   }
   return (

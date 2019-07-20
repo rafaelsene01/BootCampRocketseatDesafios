@@ -13,22 +13,25 @@ import { Container, Title } from './styles';
 
 export default function Meetups() {
   const meetup = useSelector(state => state.meetup.meetup);
+  const myMeetup = useSelector(state => state.meetup.myMeetup);
 
   return (
     <Container>
       <form>
         <Title>
           <strong>{meetup.title}</strong>
-          <div>
-            <Link to="/meetups/edit">
-              <MdModeEdit size={20} />
-              Editar
-            </Link>
-            <button type="button">
-              <MdDeleteForever size={20} />
-              Cancelar
-            </button>
-          </div>
+          {myMeetup && (
+            <div>
+              <Link to="/meetups/edit">
+                <MdModeEdit size={20} />
+                Editar
+              </Link>
+              <button type="button">
+                <MdDeleteForever size={20} />
+                Cancelar
+              </button>
+            </div>
+          )}
         </Title>
 
         <img src={meetup.imagem.url} alt="" />
