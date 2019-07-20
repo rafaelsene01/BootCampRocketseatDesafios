@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   MdChevronLeft,
@@ -10,11 +11,14 @@ import pt from 'date-fns/locale/pt';
 import { format, parseISO } from 'date-fns';
 import api from '~/services/api';
 
+import { shareMeetupRequest } from '~/store/modules/meetup/actions';
+
 import { Container, Scroll, ButtonPrev, ButtonNext } from './styles';
 
 export default function Dashboard() {
   const [meetUps, setMeetUps] = useState([]);
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadSchedule() {
@@ -41,15 +45,21 @@ export default function Dashboard() {
       setPage(page + 1);
     }
   }
+
+  function handleNavigateMeetup(meetup) {
+    const myMeetup = true;
+    dispatch(shareMeetupRequest(meetup, myMeetup));
+  }
   return (
     <Container>
       <header>
         <strong>Meus Meetups</strong>
-        <Link to="/meetups/">
+        <Link to="/meetups/new">
           <MdAddCircleOutline size={20} />
           Novo MeetUp
         </Link>
       </header>
+
       <div id="page">
         <ButtonPrev type="button" onClick={handlePrev} page={page}>
           <MdChevronLeft size={36} color="#fff" />
@@ -66,7 +76,12 @@ export default function Dashboard() {
               <strong>{event.title}</strong>
               <div id="data">
                 <span>{event.data}</span>
-                <MdChevronRight size={24} />
+                <button
+                  type="button"
+                  onClick={() => handleNavigateMeetup(event)}
+                >
+                  <MdChevronRight size={24} />
+                </button>
               </div>
             </li>
           ))}

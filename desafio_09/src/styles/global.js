@@ -28,13 +28,13 @@ export default createGlobalStyle`
 
   body, input, button {
     font: 14px 'Roboto', sans-serif;
+    color: #fff;
   }
 
   a {
     text-decoration: none;
     font-weight: bold;
     color: #ffffff;
-    font-family: Helvetica;
     font-size: 16px;
   }
 
