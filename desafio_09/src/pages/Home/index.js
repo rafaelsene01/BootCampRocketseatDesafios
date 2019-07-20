@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import pt from 'date-fns/locale/pt';
 

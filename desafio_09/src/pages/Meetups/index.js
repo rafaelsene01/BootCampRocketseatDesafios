@@ -8,6 +8,7 @@ import {
   MdModeEdit,
   MdEvent,
 } from 'react-icons/md';
+import { isBefore, parseISO } from 'date-fns';
 
 import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
 
@@ -18,6 +19,10 @@ export default function Meetups() {
   const myMeetup = useSelector(state => state.meetup.myMeetup);
   const dispatch = useDispatch();
 
+  function datePassed() {
+    return isBefore(parseISO(meetup.defaultData), new Date());
+  }
+
   return (
     <Container>
       <form>
@@ -25,10 +30,13 @@ export default function Meetups() {
           <strong>{meetup.title}</strong>
           {myMeetup && (
             <div>
-              <Link to="/meetups/edit">
-                <MdModeEdit size={20} />
-                Editar
-              </Link>
+              {!datePassed() && (
+                <Link to="/meetups/edit">
+                  <MdModeEdit size={20} />
+                  Editar
+                </Link>
+              )}
+
               <button
                 type="button"
                 onClick={() => dispatch(deleteMeetupRequest(meetup.id))}

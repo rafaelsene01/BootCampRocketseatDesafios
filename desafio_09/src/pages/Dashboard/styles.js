@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 export const Container = styled.div`
-  max-width: 600px;
+  max-width: 940px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

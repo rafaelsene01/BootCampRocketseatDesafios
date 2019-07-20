@@ -9,7 +9,6 @@ class MeetupEventController {
     const page = req.query.page || 1;
 
     const where = {
-      user_id: { [Op.ne]: req.userId },
       data: { [Op.gt]: new Date() },
     };
 
