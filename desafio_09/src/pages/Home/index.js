@@ -50,7 +50,7 @@ export default function Dashboard() {
     <Container>
       {!meetUps.length && page === 1 ? (
         <Meetup>
-          <h1>Não há reuniões</h1>
+          <h1>Não há encontros</h1>
         </Meetup>
       ) : (
         <>

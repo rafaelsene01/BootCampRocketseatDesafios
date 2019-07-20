@@ -71,7 +71,6 @@ export const Container = styled.div`
       align-items: center;
 
       strong {
-        width: 165px;
         height: 21px;
         font-size: 18px;
         font-weight: 700;
