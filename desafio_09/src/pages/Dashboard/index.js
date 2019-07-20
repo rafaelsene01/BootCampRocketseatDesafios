@@ -60,33 +60,41 @@ export default function Dashboard() {
         </Link>
       </header>
 
-      <div id="page">
-        <ButtonPrev type="button" onClick={handlePrev} page={page}>
-          <MdChevronLeft size={36} color="#fff" />
-        </ButtonPrev>
-        <strong>{page}</strong>
-        <ButtonNext type="button" onClick={handleNext} meetUps={meetUps.length}>
-          <MdChevronRight size={36} color="#fff" />
-        </ButtonNext>
-      </div>
-      <Scroll>
-        <ul>
-          {meetUps.map(event => (
-            <li key={event.id}>
-              <strong>{event.title}</strong>
-              <div id="data">
-                <span>{event.data}</span>
-                <button
-                  type="button"
-                  onClick={() => handleNavigateMeetup(event)}
-                >
-                  <MdChevronRight size={24} />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </Scroll>
+      {!!meetUps.length && (
+        <>
+          <div id="page">
+            <ButtonPrev type="button" onClick={handlePrev} page={page}>
+              <MdChevronLeft size={36} color="#fff" />
+            </ButtonPrev>
+            <strong>{page}</strong>
+            <ButtonNext
+              type="button"
+              onClick={handleNext}
+              meetUps={meetUps.length}
+            >
+              <MdChevronRight size={36} color="#fff" />
+            </ButtonNext>
+          </div>
+          <Scroll>
+            <ul>
+              {meetUps.map(event => (
+                <li key={event.id}>
+                  <strong>{event.title}</strong>
+                  <div id="data">
+                    <span>{event.data}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleNavigateMeetup(event)}
+                    >
+                      <MdChevronRight size={24} />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Scroll>
+        </>
+      )}
     </Container>
   );
 }
