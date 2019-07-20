@@ -34,8 +34,6 @@ export const Container = styled.div`
     strong {
       width: 223px;
       height: 36px;
-      color: #ffffff;
-      font-family: Helvetica;
       font-size: 32px;
       font-weight: 700;
     }
@@ -46,7 +44,6 @@ export const Container = styled.div`
       border: 0;
       border-radius: 4px;
       height: 44px;
-      color: #fff;
       font-weight: bold;
       font-size: 16px;
 
@@ -75,8 +72,6 @@ export const Container = styled.div`
       strong {
         width: 165px;
         height: 21px;
-        color: #ffffff;
-        font-family: Helvetica;
         font-size: 18px;
         font-weight: 700;
       }
@@ -92,8 +87,9 @@ export const Container = styled.div`
           margin-right: 25px;
         }
 
-        svg {
-          color: #fff;
+        > button {
+          background: none !important;
+          border: 0;
         }
       }
     }

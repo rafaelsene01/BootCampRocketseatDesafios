@@ -15,7 +15,6 @@ export const Content = styled.div`
   a {
     text-decoration: none;
     font-weight: bold;
-    color: #fff;
   }
 
   nav {
@@ -64,7 +63,6 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #fff;
     }
     a {
       display: block;

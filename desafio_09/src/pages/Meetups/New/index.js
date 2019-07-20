@@ -9,7 +9,7 @@ import ImageInput from './ImageInput';
 
 import { Container } from '../styles';
 
-export default function Profile() {
+export default function New() {
   const profile = useSelector(state => state.user.profile);
   const dispatch = useDispatch();
 
