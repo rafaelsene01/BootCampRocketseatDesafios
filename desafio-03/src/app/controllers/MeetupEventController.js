@@ -39,7 +39,7 @@ class MeetupEventController {
         {
           model: File,
           as: 'imagem',
-          attributes: ['url', 'name', 'path'],
+          attributes: ['id', 'url', 'name', 'path'],
         },
       ],
     });
