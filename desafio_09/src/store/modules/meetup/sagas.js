@@ -42,22 +42,14 @@ export function* editMeetup({ payload }) {
     const { id, imagem_id, title, descricao, data, localizacao } = payload;
 
     const newData = getTime(data) ? getTime(data) : getTime(parseISO(data));
-    if (imagem_id) {
-      yield call(api.put, `meetups/${id}`, {
-        imagem_id: Number(imagem_id),
-        title,
-        descricao,
-        data: newData,
-        localizacao,
-      });
-    } else {
-      yield call(api.put, `meetups/${id}`, {
-        title,
-        descricao,
-        data: newData,
-        localizacao,
-      });
-    }
+
+    const meetup = Object.assign(
+      { title, descricao, data: newData, localizacao },
+      Number(imagem_id) || {}
+    );
+
+    yield call(api.put, `meetups/${id}`, meetup);
+
     toast.success('Meetup editado');
     history.push('/dashboard');
   } catch (error) {
