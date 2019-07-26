@@ -6,29 +6,79 @@ import {
 } from 'react-navigation';
 
 import Home from './pages/Home';
+import Meetups from './pages/Meetups';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 export default (isSigned = false) =>
   createAppContainer(
-    createSwitchNavigator({
-      Sign: createSwitchNavigator({
-        screen: createStackNavigator(
+    createSwitchNavigator(
+      {
+        Sign: createSwitchNavigator(
           {
-            Home,
+            screen: createStackNavigator(
+              {
+                Home,
+                Meetups,
+              },
+              {
+                defaultNavigationOptions: {
+                  headerTransparent: true,
+                  headerTintColor: '#fff',
+                  headerLeftContainerStyle: {
+                    marginLeft: 20,
+                  },
+                  headerRightContainerStyle: {
+                    marginRight: 20,
+                  },
+                },
+                headerLayoutPreset: 'center',
+              }
+            ),
+            screen2: createStackNavigator(
+              {
+                SignIn,
+                SignUp,
+              },
+              {
+                defaultNavigationOptions: {
+                  headerTransparent: true,
+                  headerTintColor: '#fff',
+                  headerLeftContainerStyle: {
+                    marginLeft: 20,
+                  },
+                  headerRightContainerStyle: {
+                    marginRight: 20,
+                  },
+                },
+                headerLayoutPreset: 'center',
+              }
+            ),
           },
           {
-            defaultNavigationOptions: {
-              headerTransparent: true,
-              headerTintColor: '#fff',
-              headerLeftContainerStyle: {
-                marginLeft: 20,
+            resetOnBlur: true,
+          }
+        ),
+        App: createBottomTabNavigator(
+          {
+            Home,
+            Meetups,
+          },
+          {
+            resetOnBlur: true,
+            tabBarOptions: {
+              keyboardHidesTabBar: true,
+              activeTintColor: '#fff',
+              inactiveTintColor: 'rgba(255,255,255,0.6)',
+              style: {
+                backgroundColor: '#402845',
               },
-              headerLayoutPreset: 'center',
             },
           }
         ),
-      }),
-      App: createBottomTabNavigator({
-        Home,
-      }),
-    })
+      },
+      {
+        initialRouteName: isSigned ? 'App' : 'Sign',
+      }
+    )
   );
