@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
 
-// import { Container } from './styles';
+import { useSelector } from 'react-redux';
 
-export default function src() {
-  return <Text>Hello World</Text>;
+import createRoutes from './routes';
+
+export default function App() {
+  const signed = useSelector(state => state.auth.signed);
+
+  const Routes = createRoutes(signed);
+  return <Routes />;
 }
