@@ -2,6 +2,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const LogoImg = styled.Image`
@@ -15,8 +18,9 @@ export const Header = styled.View`
   align-self: center;
   align-items: center;
 
-  margin-top: 60px;
+  margin-top: ${props => (props.sig ? '10px' : '60px')};
 `;
+
 export const Strong = styled.Text`
   color: #fff;
   font-size: 18px;

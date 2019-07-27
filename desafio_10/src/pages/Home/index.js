@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { View, ActivityIndicator } from 'react-native';
 import { subDays, addDays, format, isBefore } from 'date-fns';
@@ -15,6 +16,7 @@ import { Container, Header, Strong, LogoImg, List } from './styles';
 import meetup from '~/store/modules/meetup/reducer';
 
 export default function Home() {
+  const signed = useSelector(state => state.auth.signed);
   const [date, setDate] = useState(new Date());
   const [loading, setLoading] = useState(false);
   const [meetups, setMeetups] = useState([]);
@@ -46,7 +48,7 @@ export default function Home() {
   return (
     <Background>
       <Container>
-        <Header>
+        <Header sig={signed}>
           <Button type="button" onPress={handlePrevDay}>
             <Icon name="keyboard-arrow-left" size={14} color="#fff" />
           </Button>
@@ -60,7 +62,7 @@ export default function Home() {
           data={meetups}
           keyExtractor={item => String(item.id)}
           renderItem={({ item: cardMeetup }) => (
-            <CardMeetup data={cardMeetup} />
+            <CardMeetup data={cardMeetup} signed={signed} />
           )}
         />
         {loading && <ActivityIndicator />}
@@ -69,11 +71,11 @@ export default function Home() {
   );
 }
 
-Home.navigationOptions = ({ navigation }) => ({
+Home.navigationOptions = ({ navigation, isSigned }) => ({
   headerTitle: <LogoImg source={logo} />,
   headerLeft: <View />,
 
-  headerRight: (
+  headerRight: !isSigned && (
     <Button
       onPress={() => {
         navigation.navigate('SignIn');

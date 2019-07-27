@@ -15,7 +15,7 @@ import {
   Text,
 } from './styles';
 
-export default function CardMeetup({ data }) {
+export default function CardMeetup({ data, signed }) {
   const dateParsed = useMemo(() => {
     return formatRelative(subHours(parseISO(data.data), 3), new Date(), {
       locale: pt,
@@ -46,7 +46,7 @@ export default function CardMeetup({ data }) {
           </Item>
         </Additional>
 
-        <Button>Realizar inscrição</Button>
+        {signed && <Button>Realizar inscrição</Button>}
       </Info>
     </Container>
   );
