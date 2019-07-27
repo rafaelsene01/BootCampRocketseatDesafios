@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Meetups from './pages/Meetups';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -63,6 +64,7 @@ export default (isSigned = false) =>
           {
             Home,
             Meetups,
+            Profile,
           },
           {
             resetOnBlur: true,
