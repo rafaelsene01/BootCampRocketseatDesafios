@@ -96,6 +96,28 @@ class SubscriptionController {
 
     return res.json(subscription);
   }
+
+  async delete(req, res) {
+    const subscription = await Subscription.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['id'],
+        },
+      ],
+    });
+
+    if (subscription.user.id !== req.userId) {
+      return res.status(401).json({
+        error: "You don't have permission to cancel this subscription",
+      });
+    }
+
+    await subscription.destroy();
+
+    return res.json(subscription);
+  }
 }
 
 export default new SubscriptionController();

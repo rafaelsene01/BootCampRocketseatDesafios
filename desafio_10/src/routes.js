@@ -6,7 +6,7 @@ import {
 } from 'react-navigation';
 
 import Home from './pages/Home';
-import Meetups from './pages/Meetups';
+import Registrations from './pages/Registrations';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
@@ -20,7 +20,6 @@ export default (isSigned = false) =>
             screen: createStackNavigator(
               {
                 Home,
-                Meetups,
               },
               {
                 defaultNavigationOptions: {
@@ -63,11 +62,10 @@ export default (isSigned = false) =>
         App: createBottomTabNavigator(
           {
             Home,
-            Meetups,
+            Registrations,
             Profile,
           },
           {
-            resetOnBlur: true,
             tabBarOptions: {
               keyboardHidesTabBar: true,
               activeTintColor: '#fff',
