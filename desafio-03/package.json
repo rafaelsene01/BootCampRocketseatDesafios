@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "queue": "yarn sucrase-node src/queue.js",
-    "start": "yarn sucrase-node src/server.js",
+    "start": "node dist/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
